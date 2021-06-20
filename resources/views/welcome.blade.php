@@ -8,6 +8,10 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 
+
+    <style>
+
+    </style>
     </head>
 
     <body style="background-color:#FFFFFF">
@@ -33,19 +37,19 @@
             </ol>
             <div class="carousel-inner" style="background-color:#000">
                 <div class="carousel-item active" align="center" style="margin-top:10px">
-                    <img src="img/GG.gif" alt="logo" height="600px" width="100%">
+                    <img src="img/GG.gif" alt="logo" height="350px" >
                 </div>
                 <div class="carousel-item" align="center" style="margin-top:10px">
-                    <img src="img/Decreto.png"  alt="Decreto Ejecutivo" height="600px" width="100%">
+                    <img src="img/Decreto.png"  alt="Decreto Ejecutivo" height="350px" >
                 </div>
                 <div class="carousel-item" align="center" style="margin-top:10px">
-                    <img src="img/Objetivo.png"   alt="Objetivo General" height="600px" width="100%">
+                    <img src="img/Objetivo.png"   alt="Objetivo General" height="350px" >
                 </div>
-                <div class="carousel-item" align="center" style="margin-top:10px" width="100%">
-                    <img src="img/Mision.png"   alt="Mision" height="600px">
+                <div class="carousel-item" align="center" style="margin-top:10px" >
+                    <img src="img/Mision.png"   alt="Mision" height="350px">
                 </div>
-                <div class="carousel-item" align="center" style="margin-top:10px" width="100%">
-                    <img src="img/Vision.png"   alt="Vision" height="600px">
+                <div class="carousel-item" align="center" style="margin-top:10px" >
+                    <img src="img/Vision.png"   alt="Vision" height="350px">
                 </div>
 
             </div>
@@ -61,11 +65,12 @@
         <!-- Fin del Carrusel -->
 
 <?php
-$caracter = "color: #000000;font-size:40px;"
+$caracter = "color: #FFF;font-size:40px;"
+
 ?>
 
                 <!-- =========================  Fecha y Hora ========================== -->
-       <div align="center" style="background-color: #FFF">
+       <div align="center" style="background-color: #000">
            <table align="center">
                <tr>
                        <p class="digit" style="{{$caracter}}"  id="diaSemana" class="diaSemana" ></p>&nbsp;&nbsp;
@@ -74,9 +79,10 @@ $caracter = "color: #000000;font-size:40px;"
                        <p class="digit" style="{{$caracter}}" id="mes" class="mes" ></p>&nbsp;&nbsp;
                        <p class="digit" style="{{$caracter}}" > del </p>&nbsp;&nbsp;
                        <p class="digit" style="{{$caracter}}" id="anio" class="anio"></p>&nbsp;&nbsp;
+                       <p class="digit" style="{{$caracter}}">--</p>&nbsp;&nbsp;
                </tr>
-               <br>
-               <tr align="center">
+               <tr>
+                       <p class="digit" style="{{$caracter}}" >Hora: </p>
                        <p class="digit" style="{{$caracter}}" id="horas" class="horas"></p>
                        <p class="digit" style="{{$caracter}}">:</p>
                        <p class="digit" style="{{$caracter}}" id="minutos" class="minutos"></p>
@@ -98,39 +104,48 @@ $caracter = "color: #000000;font-size:40px;"
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
                         <div class="open-overlay"><i class="icon-lightbulb"></i></div>
-                        <h4>Vas pal Mamo</h4>
-                        <p>Si te portas mal vas a ir a parar al mamo.</p>
+                        <h4>Denuncia</h4>
+                        <p> asdsfgasfdgfdgdsfgd</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
                         <div class="open-overlay"><i class="icon-ribbon"></i></div>
-                        <h4>De 10 cuanto le das a Gladis</h4>
-                        <p>Molina le dio 8, Isaias le dio 8, Edas le dio 7, solo yo le di 10</p>
+                        <h4>Catalogo de  Crimenes</h4>
+                        <p>af dsfghdgdfgjhd ddgh</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
                         <div class="open-overlay"><i class="icon-circle-compass"></i></div>
-                        <h4>Hola Denia</h4>
-                        <p>Hola Denia, que tal como le va?</p>
+                        <h4>Ejecutar Denuncia </h4>
+                        <p>sdxfgse shsdfg</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
                         <div class="open-overlay"><i class="icon-circle-compass"></i></div>
-                        <h4>Hola Denia</h4>
-                        <p>Hola Denia, que tal como le va?</p>
+                        <h4>Delito</h4>
+                        <p> sdfsgdh dfgh fghd </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
                         <div class="open-overlay"><i class="icon-circle-compass"></i></div>
-                        <h4>Hola Denia</h4>
-                        <p>Hola Denia, que tal como le va?</p>
+                        <h4>Seguimiento</h4>
+                        <p>sdsfgddghd fsdfs</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="features-box">
+                        <div class="open-overlay"><i class="icon-circle-compass"></i></div>
+                        <h4>Salir del Sistema</h4>
+                        <p>Hdfgdgdfgstry  gfd</p>
                     </div>
                 </div>
             </div>
+            </div>
+
 
     </section> <!-- Fin Botones -->
 
