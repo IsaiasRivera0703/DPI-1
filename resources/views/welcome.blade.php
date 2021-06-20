@@ -8,10 +8,6 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 
-
-    <style>
-
-    </style>
     </head>
 
     <body style="background-color:#FFFFFF">
