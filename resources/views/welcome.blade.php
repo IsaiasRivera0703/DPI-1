@@ -99,42 +99,42 @@ $caracter = "color: #FFF;font-size:40px;"
             <div class="row text-center">
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
-                        <div class="open-overlay"><i class="icon-lightbulb"></i></div>
+                        <div class="open-overlay"><i class="fas fa-archive"></i></div>
                         <h4>Denuncia</h4>
                         <p> asdsfgasfdgfdgdsfgd</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
-                        <div class="open-overlay"><i class="icon-ribbon"></i></div>
+                        <div class="open-overlay"><i class="fas fa-book"></i></div>
                         <h4>Catalogo de  Crimenes</h4>
                         <p>af dsfghdgdfgjhd ddgh</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
-                        <div class="open-overlay"><i class="icon-circle-compass"></i></div>
+                        <div class="open-overlay"><i class="fas fa-gavel"></i></div>
                         <h4>Ejecutar Denuncia </h4>
                         <p>sdxfgse shsdfg</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
-                        <div class="open-overlay"><i class="icon-circle-compass"></i></div>
+                        <div class="open-overlay"><i class="fas fa-list-alt"></i></div>
                         <h4>Delito</h4>
                         <p> sdfsgdh dfgh fghd </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
-                        <div class="open-overlay"><i class="icon-circle-compass"></i></div>
+                        <div class="open-overlay"><i class="fas fa-sync"></i></div>
                         <h4>Seguimiento</h4>
                         <p>sdsfgddghd fsdfs</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="features-box">
-                        <div class="open-overlay"><i class="icon-circle-compass"></i></div>
+                        <div class="open-overlay"><i class="fas fa-sign-out-alt"></i></div>
                         <h4>Salir del Sistema</h4>
                         <p>Hdfgdgdfgstry  gfd</p>
                     </div>
