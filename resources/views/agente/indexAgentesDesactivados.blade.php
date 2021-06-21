@@ -66,19 +66,33 @@
         Agentes
     </label>
 </div>
-
+<br><br>
 <script>
 function cambio(){
 var x = document.getElementById("mySelect").value;
 window.location.href = "agentesdesactivado"+x;
 }
 </script>
+
+<?php $valor = 0; $un =0;?>
+    @foreach ($ageDes2 as $ades2)
+    <?php $un = $ades2->total?>
+    @endforeach
+    @foreach($ageDes as $ades)
+    <?php $valor = $valor+1?>
+    @endforeach
+
+    @if($texto != null)
+            <label for="" class="col-form-label">Exiten {{$un}} coincidencias con la busqueda {{$texto}}:</label>
+        @endif
+
     <table class="table table-bordered table-light mytableAgentedes " id="data_table">
         <thead class="table-dark">
             <tr class="text-center">
-                <th>Area</th>
+            <th>Placa</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
+                <th>Rango</th>
                 <th>Detalle</th>
                 <th>Restaurar</th>
                 <th>Estado</th>
@@ -88,9 +102,10 @@ window.location.href = "agentesdesactivado"+x;
         @forelse($ageDes as $ades)<!--Definimos un forelse para recuperar los valores de cada proveedor-->
             <tr>
             <!--recuperamos los datos en el orden de los campos para ser mostrados-->
-                <td>{{$ades->area}}</td>
+                <td>{{$ades->placa}}</td>
                 <td>{{$ades->nombres}}</td>
                 <td>{{$ades->apellidos}}</td>
+                <td>{{$ades->rango}}</td>
                 <td>
              <a class="btn-border btn-outline-success btn-lg"
                 href="{{route('agentedesactivado.show',['id'=>$ades->id])}}">
@@ -152,11 +167,7 @@ window.location.href = "agentesdesactivado"+x;
         </tbody>
     </table>
 
-    <?php $valor = 0?>
-    @foreach($ageDes as $ades)
-    <?php $valor = $valor+1?>
-    @endforeach
-    <p><strong>Se muestran {{$valor}} Agentes</strong></p>
+    <p><strong>Se muestran {{$valor}} Agentes de {{$un}}</strong></p>
     <script>
    //efecto boton de busqueda
 $(document).ready(function(e){

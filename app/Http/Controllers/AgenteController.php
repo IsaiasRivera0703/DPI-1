@@ -16,7 +16,7 @@ class AgenteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( $all= null)
+    public function index(Request $request, $all= null)
     {
         $bus = "";
         $aux = "";
@@ -36,13 +36,21 @@ class AgenteController extends Controller
                 }
             }
         }
+        
+        $texto = trim($request->get('texto'));
 
         if($bus == ""){
-            $sql = 'SELECT * FROM agentes';
-            $aux = "Principal";
-            $ult="Principal";
+            $sql = 'SELECT * FROM agentes where nombres like "%'.$texto.'%" 
+            or apellidos like "%'.$texto.'%" or placa like "%'.$texto.'%" or rango like "%'.$texto.'%"
+            or area like "%'.$texto.'%"';
+                $aux = "Principal";
+                $ult="Principal";
+            
         }else{
-            $sql = 'SELECT * FROM agentes WHERE area = "'.$bus.'"';
+            $sql = 'SELECT * FROM agentes WHERE area = "'.$bus.'" and (nombres like "%'.$texto.'%" 
+            or apellidos like "%'.$texto.'%" or placa like "%'.$texto.'%" or rango like "%'.$texto.'%"
+            or area like "%'.$texto.'%")';
+            
             $aux = $bus;
         }
 
@@ -50,7 +58,8 @@ class AgenteController extends Controller
         $agentes = DB::select($sql);
     
         return view('agente/indexAgente')//vista
-            ->with('agentes', $agentes)->with('ult', $ult)->with('aux', $aux);// va la ruta y variable creada
+            ->with('agentes', $agentes)->with('ult', $ult)->with('aux', $aux)
+            ->with('texto', $texto)->with('all', $all);// va la ruta y variable creada
     }
 
     /**

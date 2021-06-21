@@ -49,19 +49,26 @@ if($aux != "Principal"){
 <!--Filtro-->
 <div>
 <br>
+
+        <br>
         <!--Mandamos el texto que escriben en el filtro al controlador-->
-        <form action="{{route('agente.indice')}}" method="GET">
+        <form action="{{$all}}agentes" method="GET">
+            <div id="searc" style="width: 100%;padding-left: 10px;">
+                <div style="float: left;width:80%;">
+                    <input type="text" class="form-control target" name="texto" placeholder="Buscar" value="{{$texto}}">
+                </div>
+                
+                <div style="float: left;padding-left: 1.5%;width: 20%;">
+                    <!--Los botones necesarios para el uso del filtro-->
+                    <input style="width:45%" type="submit" class="btn btn-primary" value="Buscar">
+    
+                    <a style="width:45%" type="button" href='/agentes' class="btn btn-danger">Limpiar</a>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        <button type="submit" class="btn btn-primary ml-2" id="mostrar" value="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-    </svg></button>
-    <label> <h3  class="font-italic font-weight-bold ml-2"> Presione el icono para buscar</h3></label>
-
-    <input type="text" class="form-control pull-right oculto" id="search" placeholder="Escriba aqui para buscar">
-    <br>
-
-        </div>
-           </form>
+<br><br><br>
     </div>
 <div class="form-inline">
 <!--boton añadir Agente-->
@@ -195,8 +202,20 @@ if($aux != "Principal"){
         </div>
     </div>
     <!--Final del modal añadir-->
+    <br><br>
 
-<br><br>
+    <?php $valor = 0;?>
+    @foreach($agentes as $age)
+        <?php $valor = $valor+1?>
+    @endforeach
+
+        @if($texto != null)
+            <label for="" class="col-form-label">Exiten {{$valor}} coincidencias con la busqueda {{$texto}}:</label>
+        @endif
+
+
+
+
 <!--Tabla para mostrar los delitos-->
 <table class="table table-bordered table-light mytableAgentes" id="data_table">
     <thead class="table-dark">
@@ -454,4 +473,6 @@ function validacion() {
 
 }
 </script>
+
+<p><strong>Se muestran {{$valor}} agentes</strong> </p>
     @stop
