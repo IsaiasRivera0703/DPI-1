@@ -18,11 +18,11 @@
         <tbody>
             
         <tr style="text-align:center;font-size: 18px;">
-            <th colspan="2"><strong> Generalidades de la denuncia: <strong></th>
+            <th colspan="2"><strong> Generalidades de la Denuncia: <strong></th>
         </tr>
 
         <tr>
-            <th scope="row">Codigo:</th>
+            <th scope="row">Código:</th>
             <td>{{$denuncias->anio}}-{{sprintf("%'05d", $denuncias->codigo)}}</td>
         </tr>
 
@@ -68,7 +68,7 @@
         </tr>
 
         <tr>
-            <th scope="row">Telefono:</th>
+            <th scope="row">Teléfono:</th>
             <td>{{$denuncias->telefono}}</td>
         </tr>
 
@@ -111,7 +111,7 @@
         </tr>
 
         <tr>
-            <th scope="row">Telefono:</th>
+            <th scope="row">Teléfono:</th>
             <td>{{$denuncias->telefono_ofendido}}</td>
         </tr>
 

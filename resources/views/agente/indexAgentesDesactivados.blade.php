@@ -45,7 +45,7 @@
       <path d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
       <path d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
     </svg>
-        Índices
+    Principal
         </a>
         <a type="button" href="/agentes" id="Principal" class="btn btn-dark areas">Principal</a>
         <a type="button" href="/Cagentes" id="Comunes" class="btn btn-dark areas">Delitos Comunes</a>
@@ -66,19 +66,33 @@
         Agentes
     </label>
 </div>
-
+<br><br>
 <script>
 function cambio(){
 var x = document.getElementById("mySelect").value;
 window.location.href = "agentesdesactivado"+x;
 }
 </script>
+
+<?php $valor = 0; $un =0;?>
+    @foreach ($ageDes2 as $ades2)
+    <?php $un = $ades2->total?>
+    @endforeach
+    @foreach($ageDes as $ades)
+    <?php $valor = $valor+1?>
+    @endforeach
+
+    @if($texto != null)
+            <label for="" class="col-form-label">Exiten {{$un}} coincidencias con la busqueda {{$texto}}:</label>
+        @endif
+
     <table class="table table-bordered table-light mytableAgentedes " id="data_table">
         <thead class="table-dark">
             <tr class="text-center">
-                <th>Area</th>
+            <th>Placa</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
+                <th>Rango</th>
                 <th>Detalle</th>
                 <th>Restaurar</th>
                 <th>Estado</th>
@@ -88,9 +102,10 @@ window.location.href = "agentesdesactivado"+x;
         @forelse($ageDes as $ades)<!--Definimos un forelse para recuperar los valores de cada proveedor-->
             <tr>
             <!--recuperamos los datos en el orden de los campos para ser mostrados-->
-                <td>{{$ades->area}}</td>
+                <td>{{$ades->placa}}</td>
                 <td>{{$ades->nombres}}</td>
                 <td>{{$ades->apellidos}}</td>
+                <td>{{$ades->rango}}</td>
                 <td>
              <a class="btn-border btn-outline-success btn-lg"
                 href="{{route('agentedesactivado.show',['id'=>$ades->id])}}">
@@ -152,11 +167,7 @@ window.location.href = "agentesdesactivado"+x;
         </tbody>
     </table>
 
-    <?php $valor = 0?>
-    @foreach($ageDes as $ades)
-    <?php $valor = $valor+1?>
-    @endforeach
-    <p><strong>Se muestran {{$valor}} Agentes</strong></p>
+    <p><strong>Se muestran {{$valor}} Agentes de {{$un}}</strong></p>
     <script>
    //efecto boton de busqueda
 $(document).ready(function(e){

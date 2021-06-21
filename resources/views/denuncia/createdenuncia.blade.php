@@ -41,16 +41,16 @@ $fecha = date("d/m/Y g:i A");
 
     <!--Campo con el numero de denuncia-->
     <div class="form-group">
-      <label style="float: left;margin-left: 2%;line-height: 220%;width: 15%;" for="fechareport">Fecha y Hora del reporte:</label>
+      <label style="float: left;margin-left: 2%;line-height: 220%;width: 15%;" for="fechareport">Fecha y hora del reporte:</label>
         <input style="float: left; width: 16%;margin-left: 0.5%;" type="text" class="form-control form-control-user" name="fechareport" id="fechareport"
         value="{{$fecha}}" disabled>
       </div>
 
     <!--Campo seleccion de agentes-->
     <div class="form-group">
-    <label style="float: left; margin-left: 2%;line-height: 220%;width: 12%;" for="agente">Seleccione Agente:</label>
+    <label style="float: left; margin-left: 2%;line-height: 220%;width: 12%;" for="agente">Seleccione agente:</label>
     <select style="float: left; width: 30.5%;margin-left: 1%;height: 30px;" class=" " data-show-subtext="true" data-live-search="true" name="agente" id="agente">
-      <option style="display: none;">Seleccione un Agente</option>
+      <option style="display: none;"value="">Seleccione un agente</option>
       @foreach($agentes as $agente)
       <option value="{{$agente->id}}">
           {{$agente->nombres}} {{$agente->apellidos}}
@@ -61,7 +61,7 @@ $fecha = date("d/m/Y g:i A");
 <br><br><br>
   <!--Campo con los delitos asociados-->
   <div class="form-group">
-    <label style="float: left;padding-right: 1%;line-height: 220%;width: 17%;" for="delasoc">Delitos Asociados al Caso:</label>
+    <label style="float: left;padding-right: 1%;line-height: 220%;width: 17%;" for="delasoc">Delitos asociados al caso:</label>
     <select  onchange="prueba()" style="float: right;width: 81%;height:30px;margin-right: 2%;"  id="selectcrimen" class="mi-selector" data-show-subtext="true" data-live-search="true" multiple>
       @foreach($crimenes as $crimen)
       <option value="{{$crimen->id}}">{{$crimen->delito}}</option>
@@ -100,7 +100,7 @@ $fecha = date("d/m/Y g:i A");
 
         <!--Campo con el estado civil-->
         <div class="form-group">
-          <label style="float: left; margin-left: 2%;line-height: 220%;width: 8%;" for="estadocivil">Estado Civil:</label>
+          <label style="float: left; margin-left: 2%;line-height: 220%;width: 8%;" for="estadocivil">Estado civil:</label>
           <select  style="float: right;width: 20%;height:30px;margin-right: 1%;"  id="estadocivil" class=" " data-show-subtext="true" data-live-search="true"
            name="estadocivil">
             <option style="display: none;" value=" ">Seleccione el estado civil</option>
@@ -128,25 +128,25 @@ $fecha = date("d/m/Y g:i A");
 
         <!--Campo con el telefono-->
         <div class="form-group">
-          <label style="float: left; margin-left: 2%;line-height: 220%;width: 6%;" for="telefono">telefono:</label>
+          <label style="float: left; margin-left: 2%;line-height: 220%;width: 6%;" for="telefono">Teléfono:</label>
           <input require style="float: left;width: 18%;" type="tel" class="form-control form-control-user" name="telefono" id="telefono" maxlength="8"
           oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
         </div>
         <br><br>
-        <h5>Direccíon</h5>
+        <h5>Dirección</h5>
 <div class="form-group"></div>
               <!--Campo con el departamento-->
       <div class="form-group">
         <label style="float: left;margin-left: 0.5%;line-height: 220%;width: 10%;" for="departamento">Departamento:</label>
         <input style="float: left;width: 10%;" type="text" class="form-control form-control-user" name="departamento" id="departamento"
-        value="El Paraiso" disabled>
+        value="El Paraíso" disabled>
       </div>
 
       <!--Campo con el municipio-->
       <div class="form-group">
         <label style="float: left; margin-left: 2%;line-height: 220%;width: 7%;" for="municipio">Municipio:</label>
         <input style="float: left;width: 20%;height:30px;margin-right: 1%;" type="text" class="form-control form-control-user" name="municipio" id="municipio"
-        value="Danli" disabled>
+        value="Danlí" disabled>
         </select>
       </div>
 
@@ -164,7 +164,7 @@ $fecha = date("d/m/Y g:i A");
 
       <!--Campo de Hora y fecha de incio-->
       <div class="form-group">
-        <label style="float: left;margin-left: 0.5%;line-height: 220%;width: 15%;" for="horainicio">Fecha y Hora de Inicio:</label>
+        <label style="float: left;margin-left: 0.5%;line-height: 220%;width: 15%;" for="horainicio">Fecha y hora de inicio:</label>
         <input require style="float: left;width: 25%;" type="datetime-local" class="form-control form-control-user" name="horainicio" id="horainicio">
       </div>
 
@@ -181,20 +181,20 @@ $fecha = date("d/m/Y g:i A");
           <input require style="float: left;width: 16%;" type="number" class="form-control form-control-user" name="horas" id="horas">
         </div>
         <br><br>
-        <h5>Direccíon</h5>
+        <h5>Dirección</h5>
 <div class="form-group"></div>
               <!--Campo con el departamento-->
       <div class="form-group">
         <label style="float: left;margin-left: 0.5%;line-height: 220%;width: 10%;" for="departamento2">Departamento:</label>
         <input style="float: left;width: 10%;" type="text" class="form-control form-control-user" name="departamento2" id="departamento2"
-        value="El Paraiso" disabled>
+        value="El Paraíso" disabled>
       </div>
 
       <!--Campo con el municipio-->
       <div class="form-group">
         <label style="float: left; margin-left: 2%;line-height: 220%;width: 7%;" for="municipio2">Municipio:</label>
           <input style="float: left;width: 20%;height:30px;margin-right: 1%;" type="text" class="form-control form-control-user" name="municipio2" id="municipio2"
-        value="Danli" disabled>
+        value="Danlí" disabled>
         </select>
         </select>
       </div>
@@ -209,7 +209,7 @@ $fecha = date("d/m/Y g:i A");
 
       <!--Denuncia Tomada-->
       <div class="form-group">
-        <label style="float: left;margin-left: 0.5%;line-height: 220%;width: 15%;" for="tomada">Denuncia Tomada por:</label>
+        <label style="float: left;margin-left: 0.5%;line-height: 220%;width: 15%;" for="tomada">Denuncia tomada por:</label>
         <input style="float: left;width: 83%;" type="text" class="form-control form-control-user" name="tomada" id="tomada">
       </div>
 
@@ -224,7 +224,7 @@ $fecha = date("d/m/Y g:i A");
 
 
 <br><br>
-<label for="mensaje">Dado en la ciudad de Danli, El Paraiso a los {{$dia}} dias del mes de {{$mes}} del {{$anio}}</label>
+<label for="mensaje">Dado en la ciudad de Danlí, El Paraíso a los {{$dia}} dias del mes de {{$mes}} del {{$anio}}</label>
 
 <br><br>
 

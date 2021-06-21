@@ -49,19 +49,25 @@ if($aux != "Principal"){
 <!--Filtro-->
 <div>
 <br>
+<br>
         <!--Mandamos el texto que escriben en el filtro al controlador-->
-        <form action="{{route('agente.indice')}}" method="GET">
+        <form action="{{$all}}agentes" method="GET">
+            <div id="searc" style="width: 100%;padding-left: 10px;">
+                <div style="float: left;width:80%;">
+                    <input type="text" class="form-control target" name="texto" placeholder="Buscar" value="{{$texto}}">
+                </div>
+                
+                <div style="float: left;padding-left: 1.5%;width: 20%;">
+                    <!--Los botones necesarios para el uso del filtro-->
+                    <input style="width:45%" type="submit" class="btn btn-primary" value="Buscar">
+    
+                    <a style="width:45%" type="button" href='/agentes' class="btn btn-danger">Limpiar</a>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        <button type="submit" class="btn btn-primary ml-2" id="mostrar" value="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-    </svg></button>
-    <label> <h3  class="font-italic font-weight-bold ml-2"> Presione el icono para buscar</h3></label>
-
-    <input type="text" class="form-control pull-right oculto" id="search" placeholder="Escriba aqui para buscar">
-    <br>
-
-        </div>
-           </form>
+<br><br><br>
     </div>
 <div class="form-inline">
 <!--boton añadir Agente-->
@@ -110,7 +116,7 @@ if($aux != "Principal"){
                     <div class="modal-body">
 
                     <div class="form-group">
-                        <label form="area">Área del Agente:</label>
+                        <label form="area">Área:</label>
                          <select class="form-control form-control-user" name="area" id="area">
                          <option style="display:none" value="">Seleccione el área</option>
                          <option >Delitos Comunes</option>
@@ -122,11 +128,11 @@ if($aux != "Principal"){
                         <div class="form-group">
                             <label for="placa" class="col-form-label">Placa:</label>
                             <input required type="number" class="form-control form-control-user" maxlength="4" name="placa" id="placa"
-                            placeholder="Ingrese la placa del agente" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                            placeholder="Ingrese la placa" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                         </div>
 
                         <div class="form-group">
-                        <label form="rango">Rango del Agente:</label>
+                        <label form="rango">Rango:</label>
                          <select class="form-control form-control-user" name="rango" id="rango">
                          <option style="display:none" value="">Seleccione el rango</option>
                          <option>Clase I de Policia</option>
@@ -135,20 +141,20 @@ if($aux != "Principal"){
                         </div>
 
                         <div class="form-group">
-                        <label for="nombres" class="col-form-label">Nombres del Agente:</label>
+                        <label for="nombres" class="col-form-label">Nombre:</label>
                         <input type="text" require placeholder="Ingrese el nombre del Agente" maxlength="50" id="nombres" name="nombres" class="form-control
                         form-control-user">
                         </div>
 
                         <div class="form-group">
-                        <label for="apellidos"  maxlength="50" class="col-form-label"> Apellido del Agente:</label>
+                        <label for="apellidos"  maxlength="50" class="col-form-label"> Apellido:</label>
                         <input type="text" placeholder="Ingrese el apellido del agente" require id="apellidos" name="apellidos"
                         class="form-control form-control-user">
                         </div>
 
                         <div class="form-group">
                         <label for="telefono" class="col-form-label">Teléfono:</label>
-                        <input  type="tel" require placeholder="Ingrese el teléfono del agente" maxlength="8" id="telefono" name="telefono"
+                        <input  type="tel" require placeholder="Ingrese el número teléfónico" maxlength="8" id="telefono" name="telefono"
                         class="form-control form-control-user"  onload="ValidarTell()" 
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         pattern="^[9|8|3|2]\d{7}$"title="Ingrese un numero telefonico valido que inicie con 2,3, 8 o 9">
@@ -174,7 +180,7 @@ if($aux != "Principal"){
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>¿Desea crear el Agente?</p>
+                                    <p>¿Desea registrar el Agente?</p>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary">Guardar</button>
@@ -197,13 +203,24 @@ if($aux != "Principal"){
     <!--Final del modal añadir-->
 
 <br><br>
+<?php $valor = 0;?>
+    @foreach($agentes as $age)
+        <?php $valor = $valor+1?>
+    @endforeach
+
+        @if($texto != null)
+            <label for="" class="col-form-label">Exiten {{$valor}} coincidencias con la busqueda {{$texto}}:</label>
+        @endif
+
+
+
 <!--Tabla para mostrar los delitos-->
 <table class="table table-bordered table-light mytableAgentes" id="data_table">
     <thead class="table-dark">
         <tr class="text-center">
             <th>Placa</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
             <th>Área</th>
             <th>Rango</th>
             <th>Detalle</th>
@@ -254,7 +271,7 @@ if($aux != "Principal"){
                             <div class="modal-body">
 
                             <div class="form-group">
-                                <label form="area">Área del Agente:</label>
+                                <label form="area">Área:</label>
                                <select class="form-control form-control-user" name="area" id="area">
                                <option style="display:none">{{$age->area}}</option>
                                <option >Delitos Comunes</option>
@@ -267,7 +284,7 @@ if($aux != "Principal"){
                             <div class="form-group">
                                 <label for="placa" class="col-for-label">Placa:</label>
                                 <input require type="text" class="form-control form-control-user" maxlength="20" name="placa" id="placa" disabled
-                                value="{{$age->placa}}" autocomplete="off" placeholder="Ingrese la placa del Agente"  onkeyup="validar()" onkeydown="validar()">
+                                value="{{$age->placa}}" autocomplete="off" placeholder="Ingrese la placa "  onkeyup="validar()" onkeydown="validar()">
                                 </div>
 
 
@@ -282,21 +299,21 @@ if($aux != "Principal"){
 
 
                                 <div class="form-group">
-                                    <label for="nombres" class="col-form-label">Nombre Del Agente:</label>
+                                    <label for="nombres" class="col-form-label">Nombre:</label>
                                     <input required type="text" class="form-control form-control-user" maxlength="50" name="nombres" id="nombres"
-                                    value="{{$age->nombres}}" autocomplete="off" placeholder="Ingrese el nombre del Agente" onkeydown="validar()" onkeyup="validar()">
+                                    value="{{$age->nombres}}" autocomplete="off" placeholder="Ingrese el nombre" onkeydown="validar()" onkeyup="validar()">
                                 </div>
 
                                 <div class="form-group">
-                                <label for="apellidos" class="col-form-label">Apellido del Agente:</label>
+                                <label for="apellidos" class="col-form-label">Apellido:</label>
                                 <input type="text" require class="form-control form-control-user" maxlength="50" id="apellidos" name="apellidos"
-                                value="{{$age->apellidos}}" autocomplete="off" placeholder="Ingrese los apellidos del Agente" onkeyup="validar()" onkeydown="validar()">
+                                value="{{$age->apellidos}}" autocomplete="off" placeholder="Ingrese el apellido" onkeyup="validar()" onkeydown="validar()">
                                 </div>
 
                                 <div class="form-group">
-                                <label for="telefono" class="col-form-label">Teléfono</label>
+                                <label for="telefono" class="col-form-label">Teléfono:</label>
                                 <input type="text" require autocomplete="off" class="form-control form-control-user" maxlength="8" id="telefono" name="telefono"
-                                value="{{$age->telefono}}" placeholder="Numero Telefonico del Agente" onkeydown="validar()" onkeyup="validar()"
+                                value="{{$age->telefono}}" placeholder="Numero telefónico" onkeydown="validar()" onkeyup="validar()"
                                   onload="ValidarTell()"     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
 
@@ -321,7 +338,7 @@ if($aux != "Principal"){
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p>¿Desea editar el Agente?</p>
+                                <p>¿Desea editar los datos del agente?</p>
                             </div>
                             <div class="modal-footer">
                             <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary">Aceptar</button>
@@ -365,7 +382,7 @@ if($aux != "Principal"){
                             </button>
                         </div>
                         <div class="modal-body">
-                            ¿Desea realmente eliminar el Agente {{$age->nombres}} {{$age->apellidos}}?
+                            ¿Desea realmente desactivar el agente {{$age->nombres}} {{$age->apellidos}}?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -390,7 +407,7 @@ if($aux != "Principal"){
         </tr>
     @empty
         <tr>
-            <th colspan="5">No hay Agentes</th><!--Si la tabla esta vacia mostramos el mensaje no hay Agentes-->
+            <th colspan="5">¡No hay Agentes!</th><!--Si la tabla esta vacia mostramos el mensaje no hay Agentes-->
         </tr>
     @endforelse<!--fin del forelse-->
     </script>
@@ -454,4 +471,6 @@ function validacion() {
 
 }
 </script>
+
+<p><strong>Se muestran {{$valor}} agentes</strong> </p>
     @stop

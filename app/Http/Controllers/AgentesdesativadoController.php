@@ -23,13 +23,19 @@ class AgentesdesativadoController extends Controller
         }
         $texto = trim($request->get('texto'));
 
+        $sql = 'SELECT COUNT(*) AS total FROM agentesdesativados WHERE placa like "%'.$texto.'%" or nombres like "%'.$texto.'%" or apellidos like "%'.$texto.'%"or rango like "%'.$texto.'%"';
+        $ageDes2 = DB::select($sql);
+
         $ageDes= DB::table('agentesdesativados')
             ->select('id','area','placa','rango','nombres','apellidos','telefono',
             'telefono')
-            ->where('nombres','like','%'.$texto.'%')
+            ->orwhere('nombres','like','%'.$texto.'%')
+            ->orwhere('apellidos','like','%'.$texto.'%')
+            ->orwhere('rango','like','%'.$texto.'%')
+            ->orwhere('placa','like','%'.$texto.'%')
             ->paginate($num);
         return view('agente/indexAgentesDesactivados')
-        ->with('ageDes',$ageDes)->with('texto',$texto)->with('num',$num);
+        ->with('ageDes',$ageDes)->with('texto',$texto)->with('num',$num) ->with('ageDes2',$ageDes2);
 
     }
 

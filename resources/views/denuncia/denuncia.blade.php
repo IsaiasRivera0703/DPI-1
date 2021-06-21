@@ -46,7 +46,7 @@
 <table class="table table-bordered" id="data_table" >
         <thead class="table-dark">
             <tr class="text-center">
-                <th>Codigo</th>
+                <th>Código</th>
                 <th>Agente</th>
                 <th>Tel. Agente</th>
                 <th>Fecha</th>
@@ -77,7 +77,7 @@
         </tr>
             @empty
             <tr>
-                <th colspan="5">No hay crimenes</th><!--Si la tabla esta vacia mostramos el mensaje no hay crimenes-->
+                <th colspan="5">¡No hay crimenes!</th><!--Si la tabla esta vacia mostramos el mensaje no hay crimenes-->
             </tr>
         @endforelse<!--fin del forelse-->
         </tbody>
